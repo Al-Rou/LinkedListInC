@@ -12,34 +12,34 @@ struct LinkedList* insertInListOnHead(struct LinkedList* inputList, int entry)
    struct LinkedList* newElement;
    newElement = (struct LinkedList*) malloc(sizeof(struct LinkedList));
    newElement->value = entry;
-   //newElement->next = NULL;
    newElement->next = inputList;
    inputList = newElement;
    return inputList;
-   /*if(inputList == NULL)
-   {
-       inputList = newElement;
-       return inputList;
-   }
-   else
-   {
-       newElement->next = inputList;
-       inputList = newElement;
-       return inputList;
-   }*/
 }
 struct LinkedList* insertInListOnTail(struct LinkedList* inputList, int entry)
 {
-
+    struct LinkedList* newElement;
+    newElement = (struct LinkedList*) malloc(sizeof(struct LinkedList));
+    newElement->value = entry;
+    newElement->next = NULL;
+    if(inputList != NULL){
+    while(inputList->next != NULL)
+    {
+        inputList = inputList->next;
+    }
+    inputList->next = newElement;
+    return inputList;
+    }
+    else{
+    inputList = newElement;
+    return inputList;}
 }
 int main()
 {
     struct LinkedList* myList;
     myList = (struct LinkedList*) malloc(sizeof(struct LinkedList));
     myList = NULL;
-    //printf("%d\n", myList->value);
     myList = insertInListOnHead(myList, 5);
-    //printf("%d\n", myList->value);
     myList = insertInListOnHead(myList, 7);
     myList = insertInListOnHead(myList, 8);
     myList = insertInListOnHead(myList, 21);
@@ -53,14 +53,23 @@ int main()
                 break;
             }
     }
-    /*printf("%d\n", myList->value);
-    myList = myList->next;
-    printf("%d\n", myList->value);
-    myList = myList->next;
-    if(myList == NULL)
+    printf("Now, another order:\n");
+    struct LinkedList* mySecondList;
+    mySecondList = (struct LinkedList*) malloc(sizeof(struct LinkedList));
+    mySecondList = NULL;
+    mySecondList = insertInListOnTail(mySecondList, 5);
+    mySecondList = insertInListOnTail(mySecondList, 7);
+    mySecondList = insertInListOnTail(mySecondList, 8);
+    /*mySecondList = insertInListOnTail(mySecondList, 21);
+    mySecondList = insertInListOnTail(mySecondList, 10);*/
+    while(true)
     {
-        printf("YES");
-    }*/
-
+        printf("%d\n", mySecondList->value);
+        mySecondList = mySecondList->next;
+        if(mySecondList == NULL)
+            {
+                break;
+            }
+    }
     return 0;
 }
