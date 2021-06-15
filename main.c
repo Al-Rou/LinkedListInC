@@ -22,17 +22,20 @@ struct LinkedList* insertInListOnTail(struct LinkedList* inputList, int entry)
     newElement = (struct LinkedList*) malloc(sizeof(struct LinkedList));
     newElement->value = entry;
     newElement->next = NULL;
-    if(inputList != NULL){
-    while(inputList->next != NULL)
-    {
-        inputList = inputList->next;
-    }
-    inputList->next = newElement;
-    return inputList;
-    }
+    struct LinkedList* auxiliary;
+    auxiliary = inputList;
+    if(auxiliary != NULL){
+            while(auxiliary->next != NULL)
+            {
+                auxiliary = auxiliary->next;
+            }
+            auxiliary->next = newElement;
+            return inputList;
+            }
     else{
-    inputList = newElement;
-    return inputList;}
+            inputList = newElement;
+            return inputList;
+    }
 }
 int main()
 {
@@ -60,8 +63,8 @@ int main()
     mySecondList = insertInListOnTail(mySecondList, 5);
     mySecondList = insertInListOnTail(mySecondList, 7);
     mySecondList = insertInListOnTail(mySecondList, 8);
-    /*mySecondList = insertInListOnTail(mySecondList, 21);
-    mySecondList = insertInListOnTail(mySecondList, 10);*/
+    mySecondList = insertInListOnTail(mySecondList, 21);
+    mySecondList = insertInListOnTail(mySecondList, 10);
     while(true)
     {
         printf("%d\n", mySecondList->value);
