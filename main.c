@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 struct LinkedList
 {
@@ -35,12 +36,15 @@ int main()
     myList = insertInListOnHead(myList, 5);
     myList = insertInListOnHead(myList, 7);
     myList = insertInListOnHead(myList, 8);
-    while(myList != NULL)
-    {
-        printf("%d", myList->value);
-        myList = myList->next;
-        //printf("%d", myList->value);
-    }
-    printf("Hello world!\n");
+
+    printf("%d\n", myList->value);
+    myList = myList->next;
+    printf("%d\n", myList->value);
+    myList = myList->next;
+    printf("%d\n", myList->value);
+    myList = myList->next;
+    if (myList == NULL){
+    printf("%d\n", myList->value);}
+
     return 0;
 }
