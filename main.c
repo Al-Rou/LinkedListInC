@@ -6,7 +6,13 @@ struct LinkedList
     int value;
     struct LinkedList* next;
 };
-void insertInList(int entry)
+struct LinkedList* insertInListOnHead(struct LinkedList* inputList, int entry)
+{
+   struct LinkedList* newElement;
+   newElement->value = entry;
+   newElement->next = NULL;
+}
+struct LinkedList* insertInListOnTail(struct LinkedList* inputList, int entry)
 {
 
 }
